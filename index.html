@@ -246,6 +246,7 @@
 
   const FOUNDER_NAME = 'sav666';
   const FOUNDER_PASS = 'Supersejt1';
+  const LEADER_NAME = 'strike666';
 
   tabLogin.addEventListener('click', function(){
     tabLogin.classList.add('active');
@@ -294,6 +295,8 @@
         return;
       }
       rank = 'Founder';
+    } else if(key === LEADER_NAME){
+      rank = 'Leader';
     }
 
     accounts[key] = { name: name, email: email || null, pass: pass, rank: rank };
