@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>666</title>
+<style>
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family: "Courier New", monospace;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:20px;
+  }
+
+  #card{
+    width:100%;
+    max-width:360px;
+    border:1px solid #fff;
+    padding:30px 24px;
+    text-align:center;
+  }
+
+  h1{
+    font-size:28px;
+    letter-spacing:8px;
+    margin:0 0 4px;
+    font-weight:normal;
+  }
+  .sub{
+    font-size:11px;
+    letter-spacing:3px;
+    color:#888;
+    margin-bottom:20px;
+    text-transform:uppercase;
+  }
+
+  hr{
+    border:none;
+    border-top:1px solid #333;
+    margin:20px 0;
+  }
+
+  .tabs{
+    display:flex;
+    margin-bottom:20px;
+    border:1px solid #fff;
+  }
+  .tabs button{
+    flex:1;
+    background:#000;
+    border:none;
+    color:#888;
+    font-family:inherit;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:9px 0;
+    cursor:pointer;
+  }
+  .tabs button.active{
+    background:#fff;
+    color:#000;
+  }
+  .tabs button:not(.active):hover{
+    color:#fff;
+  }
+
+  label{
+    display:block;
+    text-align:left;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:4px;
+    color:#ccc;
+    text-transform:uppercase;
+  }
+  label .opt{
+    color:#555;
+    text-transform:none;
+    letter-spacing:0;
+    font-size:10px;
+  }
+  input{
+    width:100%;
+    background:#000;
+    border:1px solid #fff;
+    color:#fff;
+    font-family:inherit;
+    font-size:14px;
+    padding:8px 10px;
+    margin-bottom:16px;
+    outline:none;
+  }
+  input:focus{ background:#111; }
+
+  button.submit{
+    width:100%;
+    background:#fff;
+    border:1px solid #fff;
+    color:#000;
+    font-family:inherit;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    padding:10px;
+    cursor:pointer;
+  }
+  button.submit:hover{ background:#ccc; }
+
+  .err{
+    font-size:11px;
+    color:#fff;
+    background:#000;
+    border-left:2px solid #fff;
+    padding-left:6px;
+    text-align:left;
+    min-height:14px;
+    margin:-8px 0 10px;
+  }
+
+  #profile{ display:none; }
+
+  .avatar{
+    width:100px;
+    height:100px;
+    margin:0 auto 16px;
+    border:1px solid #fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#111;
+  }
+  .avatar svg{ width:60%; height:60%; }
+
+  .name{
+    font-size:20px;
+    letter-spacing:4px;
+    margin:0;
+  }
+  .rank{
+    font-size:11px;
+    letter-spacing:3px;
+    color:#888;
+    text-transform:uppercase;
+    margin:4px 0 20px;
+  }
+
+  .tg{
+    display:block;
+    border:1px solid #fff;
+    padding:10px;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#fff;
+    text-decoration:none;
+    margin-bottom:14px;
+  }
+  .tg:hover{ background:#fff; color:#000; }
+
+  .logout{
+    display:block;
+    width:100%;
+    background:none;
+    border:1px solid #555;
+    color:#888;
+    font-family:inherit;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:8px;
+    cursor:pointer;
+  }
+  .logout:hover{ border-color:#fff; color:#fff; }
+</style>
+</head>
+<body>
+
+<div id="card">
+
+  <div id="gate">
+    <h1>666</h1>
+    <div class="sub">members only</div>
+
+    <div class="tabs">
+      <button type="button" id="tabLogin" class="active">Log in</button>
+      <button type="button" id="tabSignup">Sign up</button>
+    </div>
+
+    <form id="loginForm" autocomplete="off">
+      <label for="loginUser">name</label>
+      <input type="text" id="loginUser" required>
+      <label for="loginPass">password</label>
+      <input type="password" id="loginPass" required>
+      <div class="err" id="loginErr"></div>
+      <button type="submit" class="submit">Log in</button>
+    </form>
+
+    <form id="signupForm" autocomplete="off" style="display:none;">
+      <label for="signupUser">name</label>
+      <input type="text" id="signupUser" required>
+      <label for="signupEmail">email <span class="opt">(optional)</span></label>
+      <input type="email" id="signupEmail">
+      <label for="signupPass">password</label>
+      <input type="password" id="signupPass" required>
+      <div class="err" id="signupErr"></div>
+      <button type="submit" class="submit">Sign up</button>
+    </form>
+  </div>
+
+  <div id="profile">
+    <div class="avatar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path>
+      </svg>
+    </div>
+    <p class="name" id="profileName"></p>
+    <div class="rank" id="profileRank"></div>
+    <hr>
+    <a class="tg" href="https://t.me/" target="_blank" rel="noopener">666 announcement →</a>
+    <button class="logout" id="logoutBtn">Log out</button>
+  </div>
+
+</div>
+
+<script>
+  // Accounts persist in this browser (localStorage) across visits.
+  let accounts = JSON.parse(localStorage.getItem('accounts666') || '{}');
+
+  function saveAccounts(){
+    localStorage.setItem('accounts666', JSON.stringify(accounts));
+  }
+
+  const gate = document.getElementById('gate');
+  const profile = document.getElementById('profile');
+
+  const tabLogin = document.getElementById('tabLogin');
+  const tabSignup = document.getElementById('tabSignup');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+
+  const FOUNDER_NAME = 'sav666';
+  const FOUNDER_PASS = 'Supersejt1';
+
+  tabLogin.addEventListener('click', function(){
+    tabLogin.classList.add('active');
+    tabSignup.classList.remove('active');
+    loginForm.style.display = 'block';
+    signupForm.style.display = 'none';
+  });
+  tabSignup.addEventListener('click', function(){
+    tabSignup.classList.add('active');
+    tabLogin.classList.remove('active');
+    signupForm.style.display = 'block';
+    loginForm.style.display = 'none';
+  });
+
+  function enterProfile(name, rank){
+    document.getElementById('profileName').textContent = name;
+    document.getElementById('profileRank').textContent = 'Rank: ' + rank;
+    gate.style.display = 'none';
+    profile.style.display = 'block';
+  }
+
+  signupForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const err = document.getElementById('signupErr');
+    err.textContent = '';
+
+    const name = document.getElementById('signupUser').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const pass = document.getElementById('signupPass').value;
+
+    if(!name || !pass){
+      err.textContent = 'name and password are required';
+      return;
+    }
+    const key = name.toLowerCase();
+
+    if(accounts[key]){
+      err.textContent = 'that name is already taken — log in instead';
+      return;
+    }
+
+    let rank = 'Member';
+    if(key === FOUNDER_NAME){
+      if(pass !== FOUNDER_PASS){
+        err.textContent = 'that name is reserved';
+        return;
+      }
+      rank = 'Founder';
+    }
+
+    accounts[key] = { name: name, email: email || null, pass: pass, rank: rank };
+    saveAccounts();
+    enterProfile(name, rank);
+  });
+
+  loginForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const err = document.getElementById('loginErr');
+    err.textContent = '';
+
+    const name = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value;
+
+    if(!name || !pass){
+      err.textContent = 'fill in both fields';
+      return;
+    }
+    const key = name.toLowerCase();
+
+    if(!accounts[key]){
+      err.textContent = 'no account with that name — sign up first';
+      return;
+    }
+    if(accounts[key].pass !== pass){
+      err.textContent = 'wrong password';
+      return;
+    }
+
+    enterProfile(accounts[key].name, accounts[key].rank);
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    profile.style.display = 'none';
+    gate.style.display = 'block';
+    loginForm.reset();
+    signupForm.reset();
+  });
+</script>
+
+</body>
+</html>
